@@ -1,0 +1,39 @@
+﻿<Window x:Class="ComicBookReader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComicBookReader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Background="Black"
+        Loaded="Window_Loaded">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Open" Click="OpenMenuItem_Click"/>
+                </MenuItem>
+            </Menu>
+                <Slider x:Name="slider2"  
+                    Minimum="0" 
+                    Maximum="{Binding ImagesAmount}"
+                        Value="{Binding CurrentIndex}"
+                    TickFrequency="1"
+                    IsSnapToTickEnabled="True"
+                    Orientation="Vertical"
+                    IsDirectionReversed="True"
+                    TickPlacement="None"
+                    ValueChanged="slider2_ValueChanged" Thumb.DragStarted="slider2_DragStarted" Thumb.DragCompleted="slider2_DragCompleted" Focusable="False" Height="auto" 
+                    Margin="10,10,0,10"
+                        />
+                <TextBlock x:Name="textBlock1"
+                   Margin="30,10,0,00"
+                   Text="{Binding CurrentIndex}" Foreground="White" />
+
+                <Image x:Name="img1" Source="{Binding Path=ImageSource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Image>
+                <!--<TextBlock HorizontalAlignment="Left" Margin="66,339,0,0" TextWrapping="Wrap" Text="{Binding Path=ImageSource}" Foreground="White" VerticalAlignment="Top"/>-->
+
+        </DockPanel>
+    </Grid>
+</Window>
